@@ -1,5 +1,5 @@
 cityName,theatreName,movieName,actors,movieRating,showTime
-c1,t1,m1,[a1 a2 a3],6.5,[4 6 8]
+c1,t1,m1,[a1 a2 a3],6.5,[4:30pm to 6:30pm]
 c1,t1,m2,[a4],7,[4 6 8]
 c1,t2,m1,[a1 a2 a3],6.5,[4 6 8]
 c2,t3,m3,[a5 a6],8,[4 6 8]

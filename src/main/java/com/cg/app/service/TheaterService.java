@@ -7,7 +7,7 @@ public interface TheaterService {
 	
 	List<Theatre> getTheaterByCity(String city);
 	List<Theatre> getTheaterByMovie(String movie);
-	List<Theatre> getShowTimeByCityTheater(String city, String Theater);
+	List<ShowTime> getShowTimeByMovieTheater(String movie, String Theater);
 	
 
 }

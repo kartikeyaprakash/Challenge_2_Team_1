@@ -23,6 +23,9 @@ import org.apache.commons.csv.CSVRecord;
 
 import com.cg.app.entities.City;
 import com.cg.app.entities.Theatre;
+import com.cg.app.service.TheaterService;
+import com.cg.app.service.impl.TheaterServiceImpl;
+import com.cg.app.util.TheaterUtil;
 
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -166,7 +169,15 @@ public class App
 //         for(String[] row : allRows){
 //            System.out.println(Arrays.toString(row));
 //         }
+         
+         
+         //Theater 
+         System.out.println("#################################");
+         TheaterUtil util = new TheaterUtil();
+         TheaterService ts = new TheaterServiceImpl(util.csvUtil());
+         System.out.println(ts.getTheaterByCity("c1"));
     }
+    
     
    
     

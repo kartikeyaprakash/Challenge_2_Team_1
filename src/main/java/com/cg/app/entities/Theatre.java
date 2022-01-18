@@ -66,6 +66,11 @@ public class Theatre {
 		movies = new ArrayList<>();
 		showTime = new ArrayList<>();
 	}
+	public Theatre() {
+		super();
+		movies = new ArrayList<>();
+		showTime = new ArrayList<>();
+	}
 	
 	
 	@Override
