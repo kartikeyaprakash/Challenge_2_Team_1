@@ -175,7 +175,18 @@ public class App
          System.out.println("#################################");
          TheaterUtil util = new TheaterUtil();
          TheaterService ts = new TheaterServiceImpl(util.csvUtil());
-         System.out.println(ts.getTheaterByCity("c1"));
+         String[] city = {"c1", "c2"};
+         for(String str : city) {
+        	
+        	 for(Theatre t : ts.getTheaterByCity(str)) {
+        		 System.out.println("Theater: "+t.getName());
+        		 System.out.println("Movies : "+t.getMovies());
+        		 
+        	 }
+         }
+         
+         
+        // System.out.println(ts.getTheaterByCity("c1"));
     }
     
     

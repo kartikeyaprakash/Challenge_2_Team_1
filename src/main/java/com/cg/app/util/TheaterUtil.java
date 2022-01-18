@@ -28,6 +28,9 @@ public class TheaterUtil {
 						.withIgnoreHeaderCase().withTrim());
 		List<Theatre> listTheatre = new ArrayList<>();
 		for (CSVRecord csvRecord : csvParser) {
+			 if(csvRecord.getRecordNumber()==1)
+	       		 continue;
+			
 			String city = csvRecord.get("cityName");
 			String theater = csvRecord.get("theatreName");
 			String movie = csvRecord.get("movieName");
@@ -60,15 +63,15 @@ public class TheaterUtil {
 
 			}
 		}
-		try {
-			for (Theatre t : listTheatre) {
-				System.out.println(t.toString());
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("Error");
-			e.printStackTrace();
-		}
+//		try {
+//			for (Theatre t : listTheatre) {
+//				System.out.println(t.toString());
+//			}
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("Error");
+//			e.printStackTrace();
+//		}
 		return listTheatre;
 	}
 }
