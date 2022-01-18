@@ -1,5 +1,6 @@
 package com.cg.app.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,8 +11,15 @@ public class Theatre {
 	private List<Movie> movies;
 	private List<Screen> screens;
 	private City city;
+	private List<ShowTime> showTime;
 	
 	
+	public List<ShowTime> getShowTime() {
+		return showTime;
+	}
+	public void setShowTime(List<ShowTime> showTime) {
+		this.showTime = showTime;
+	}
 	public String getId() {
 		return id;
 	}
@@ -52,12 +60,17 @@ public class Theatre {
 		this.screens = screens;
 		this.city = city;
 	}
-	public Theatre() {
+	public Theatre(String name) {
 		super();
+		this.name = name;
+		movies = new ArrayList<>();
+		showTime = new ArrayList<>();
 	}
+	
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(name);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -68,13 +81,13 @@ public class Theatre {
 		if (getClass() != obj.getClass())
 			return false;
 		Theatre other = (Theatre) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(name, other.name);
 	}
 	@Override
 	public String toString() {
-		return "Theatre [id=" + id + ", name=" + name + ", movies=" + movies + ", screens=" + screens + ", city=" + city
-				+ "]";
+		return "Theatre [name=" + name + ", movies=" + movies + ", city=" + city + ", showTime=" + showTime + "]";
 	}
+	
 	
 	
 	

@@ -48,9 +48,15 @@ public class City {
 	public City() {
 		super();
 	}
+	public City(String name) {
+		super();
+		this.name = name;
+	}
+	
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(name);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -60,13 +66,17 @@ public class City {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+		
 		City other = (City) obj;
-		return Objects.equals(id, other.id);
+		if(this.name.equalsIgnoreCase(other.getName()))
+			return true;
+		return Objects.equals(name, other.name);
 	}
 	@Override
 	public String toString() {
-		return "City [id=" + id + ", name=" + name + ", state=" + state + ", theatres=" + theatres + "]";
+		return "City [name=" + name + "]";
 	}
+	
 	
 	
 	

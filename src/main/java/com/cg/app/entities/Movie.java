@@ -56,11 +56,16 @@ public class Movie {
 	public Movie() {
 		super();
 	}
+	public Movie(String name) {
+		super();
+		this.name = name;
+	}
+	
 	
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(name);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -71,13 +76,13 @@ public class Movie {
 		if (getClass() != obj.getClass())
 			return false;
 		Movie other = (Movie) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(name, other.name);
 	}
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", name=" + name + ", genre=" + genre + ", rating=" + rating + ", cast=" + cast
-				+ "]";
+		return "Movie [name=" + name + "]";
 	}
+	
 	
 	
 	

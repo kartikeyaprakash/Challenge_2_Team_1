@@ -13,4 +13,23 @@ public class ShowTime {
 	//change to map (make seat chart)
 	private List<Seat> seats;
 
+	public int getShowTimeStart() {
+		return showTimeStart;
+	}
+
+	public void setShowTimeStart(int showTimeStart) {
+		this.showTimeStart = showTimeStart;
+	}
+
+	public ShowTime(int showTimeStart) {
+		super();
+		this.showTimeStart = showTimeStart;
+	}
+
+	@Override
+	public String toString() {
+		return "ShowTime [showTimeStart=" + showTimeStart + "]";
+	}
+	
+
 }
