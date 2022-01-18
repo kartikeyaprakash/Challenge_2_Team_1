@@ -1,6 +1,8 @@
 package com.cg.app.service.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,66 +13,70 @@ import com.cg.app.util.FileUtils;
 
 public class MovieServiceImpl implements MovieService {
 
+	FileUtils fileUtils = new FileUtils();
+	
 	@Override
-	public List<String> getMoviesByTheatre(String theatreId) throws IOException {
+	public List<String> getMoviesByTheatre(String theatreName) throws IOException {
 		// TODO Auto-generated method stub
-		Map<String, Set<String>> moviesByTheatre = FileUtils.oneToMany("theatreName", "movieName");
+		Map<String, Set<String>> moviesByTheatre = fileUtils.oneToMany("theatreName", "movieName");
 		
-	     for(Map.Entry<String, Set<String>> entry: moviesByTheatre.entrySet())
-         {
-        	 System.out.println("\nTheatre: "+ entry.getKey());
-        	 for(String val: entry.getValue())
-        	 {
-            	 System.out.println("Movie: "+ val);
-        	 }
-         }
-         
-		return null;
+		if(!moviesByTheatre.containsKey(theatreName))
+		{
+			//returns empty array(theatreName not in csv), can add custom exceptions later
+			return new ArrayList<>();
+		}
+		
+		else 
+		{
+			return new ArrayList<>(moviesByTheatre.get(theatreName));
+		}
+		
 	}
 
 	@Override
 	public List<String> getMoviesByCity(String cityName) throws IOException {
 		// TODO Auto-generated method stub
 		
-		Map<String, Set<String>> theatresByCity = FileUtils.oneToMany("cityName", "theatreName");
+		Map<String, Set<String>> theatresByCity = fileUtils.oneToMany("cityName", "theatreName");
+		Map<String, Set<String>> moviesByTheatre = fileUtils.oneToMany("theatreName", "movieName");
 		
-	     for(Map.Entry<String, Set<String>> entry: theatresByCity.entrySet())
-        {
-	       	 System.out.println("\nCity: "+ entry.getKey());
-	       	 
-	       	 for(String val: entry.getValue())
-	       	 {
-	           	 System.out.println("Theatre: "+ val);
-	       	 }
-       	 
-        }
-	     
-		return null;
+		Set<String> allMoviesInCity = new HashSet<>();
+		
+		if(!theatresByCity.containsKey(cityName))
+		{
+			//cityName not in csv, can add custom exceptions here later on 
+			return new ArrayList<>();
+		}
+		else
+		{
+			for(String theatre: theatresByCity.get(cityName))
+			{
+				allMoviesInCity.addAll(moviesByTheatre.get(theatre));
+			}
+			
+			return new ArrayList<>(allMoviesInCity);
+		}
+		
 	}
 
 	@Override
-	public List<String> getMoviesAboveRating(double thresholdRating) throws IOException {
+	public List<String> getMoviesAboveRating(Double thresholdRating) throws IOException {
 		// TODO Auto-generated method stub
 		
-		Map<String, String> moviesToRating = FileUtils.oneToOne("movieName", "movieRating");
+		Map<String, String> moviesToRating = fileUtils.oneToOne("movieName", "movieRating");
+		List<String> movieAboveThresholdRating = new ArrayList<>();
 		 for(Map.Entry<String, String> entry: moviesToRating.entrySet())
          {
-        	 System.out.println("\nMovie: "+ entry.getKey());
-             System.out.println("Rating: "+ entry.getValue());
+			 if(Double.parseDouble(entry.getValue())>thresholdRating)
+			 {
+				 movieAboveThresholdRating.add(entry.getKey());
+			 }
         	 
          }
-		return null;
+		return movieAboveThresholdRating;
 	}
 	
-	public static void main(String[] args) throws IOException
-	{
-		
-		MovieService ser = new MovieServiceImpl();
-		ser.getMoviesByTheatre("Hi");
-		ser.getMoviesByCity("yolo");
-		ser.getMoviesAboveRating(2.0);
-		
-	}
+
 	
 	
 

@@ -15,7 +15,7 @@ import org.apache.commons.csv.CSVRecord;
 
 public class FileUtils {
 	
-	public static Map<String, Set<String>> oneToMany(String arg1, String arg2) throws IOException
+	public  Map<String, Set<String>> oneToMany(String arg1, String arg2) throws IOException
 	{
 		BufferedReader reader = Files.newBufferedReader(Paths.get("input1.csv"));
    	// BufferedReader reader = new BufferedReader(new InputStreamReader (new FileInputStream("input.csv"),Charset.forName("windows-1250")));
@@ -46,7 +46,7 @@ public class FileUtils {
         return argsMapper;
 	}
 	
-	public static Map<String, String> oneToOne(String arg1, String arg2) throws IOException
+	public Map<String, String> oneToOne(String arg1, String arg2) throws IOException
 	{
 		BufferedReader reader = Files.newBufferedReader(Paths.get("input1.csv"));
 	   	// BufferedReader reader = new BufferedReader(new InputStreamReader (new FileInputStream("input.csv"),Charset.forName("windows-1250")));
