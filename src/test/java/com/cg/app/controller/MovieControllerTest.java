@@ -1,6 +1,7 @@
 package com.cg.app.controller;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -8,7 +9,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,13 +34,14 @@ public class MovieControllerTest {
 	@Mock
 	List<String> testMovies;
 	
-	@Before
-	public void setup(){
+	@BeforeEach
+	public  void  setup(){
 	    MockitoAnnotations.initMocks(this); 
 	}
 
 	
 	@Test
+	
 	/**
 	 * Scenario: checks whether service method is called from controller classes
 	 * 
@@ -55,6 +59,7 @@ public class MovieControllerTest {
 	}
 	
 	@Test
+	
 	/**
 	 * Scenario: checks whether service method is called from controller classes
 	 * @throws IOException
@@ -72,6 +77,7 @@ public class MovieControllerTest {
 	}
 	
 	@Test
+	
 	/**
 	 * Scenario: checks whether service method is called from controller classes
 	 * @throws IOException

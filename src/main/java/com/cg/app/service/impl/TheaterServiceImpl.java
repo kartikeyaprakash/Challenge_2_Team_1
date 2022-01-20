@@ -48,7 +48,7 @@ public class TheaterServiceImpl implements TheaterService {
 	public List<ShowTime> getShowTimeByMovieTheater(String movie, String Theater) {
 
 		Optional<Theatre> tList = listTheatre.stream().filter(th -> th.getName().equalsIgnoreCase(Theater)).findFirst();
-		if(tList.isEmpty()) 
+		if(!tList.isPresent()) 
 			throw new NoSuchElementException();
 		List<ShowTime> showtimeList = tList.get().getShowTime().stream().filter(m -> m.getMovie().getName().equalsIgnoreCase(movie))
 				.collect(Collectors.toList());

@@ -1,0 +1,4 @@
+com\cg\app\service\MovieServiceTest.class
+com\cg\app\AppTest.class
+com\cg\app\controller\MovieControllerTest.class
+com\cg\app\service\TheaterServiceTest.class

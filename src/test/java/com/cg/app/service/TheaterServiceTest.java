@@ -1,13 +1,11 @@
 package com.cg.app.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.RETURNS_DEFAULTS;
 
 import java.io.IOException;
 import java.security.Provider.Service;
@@ -17,7 +15,7 @@ import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.tsv.TsvFormat;
+
 
 import com.cg.app.entities.City;
 import com.cg.app.entities.Movie;
@@ -80,17 +78,17 @@ public class TheaterServiceTest {
 		assertFalse(list.stream()
 				.allMatch(t -> t.getCity().getName().equalsIgnoreCase("xyz")) == true,
 				() -> "Any city must not be equal to xyz");
-		assertEquals("Check size is 2",2, list.size());
+		assertEquals(2, list.size());
 		
 		list = service.getTheaterByCity("city");
 		
-		assertEquals("Check size is 0", 0, list.size());
+		assertEquals( 0, list.size());
 		
 		list = service.getTheaterByCity("");
-		assertEquals("Check size is 0", 0, list.size());
+		assertEquals( 0, list.size());
 		
 		list = service.getTheaterByCity(null);
-		assertEquals("Check size is 0", 0, list.size());
+		assertEquals( 0, list.size());
 		
 	}
 
@@ -106,13 +104,13 @@ public class TheaterServiceTest {
 				() -> "All theater must not contain movie5");
 		
 		list = service.getTheaterByMovie("xyz");
-		assertEquals("Check size is 0", 0, list.size());
+		assertEquals( 0, list.size());
 		
 		list = service.getTheaterByMovie("");
-		assertEquals("Check size is 0", 0, list.size());
+		assertEquals( 0, list.size());
 		
 		list = service.getTheaterByMovie(null);
-		assertEquals("Check size is 0", 0, list.size());
+		assertEquals( 0, list.size());
 		
 	}
 
@@ -123,7 +121,7 @@ public class TheaterServiceTest {
 		assertTrue(list.stream()
 				.allMatch(t -> t.getMovie().getName().equals("movie1") && t.getShowTime().equalsIgnoreCase("4:30pm")) == true,
 				() -> "Show time must equal");
-		assertEquals("Check size is 1",1, list.size());
+		assertEquals(1, list.size());
 		
 		assertThrows(NoSuchElementException.class, () -> {
 			service.getShowTimeByMovieTheater("movie", "theatre");
